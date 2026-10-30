@@ -138,5 +138,7 @@ lightens item icons by `--lift`.
 ## Known limitations
 
 - Data lives in one browser on one device; moving it relies on export and import.
+- The Manrope webfont comes from Google Fonts and is not precached; opened offline on a device that
+  has never loaded it, the app falls back to the system sans-serif.
 - Dates and labels are always US English (en-US), whatever the browser locale.
 - There are no automated tests; the checks in the specification's testing checklist were run by hand.

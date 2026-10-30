@@ -135,9 +135,12 @@
     var swOff = false;
     try { swOff = window.localStorage.getItem('foodGroupLog.noSW') === '1'; } catch (err) {}
     if ('serviceWorker' in navigator && !swOff && location.protocol.indexOf('http') === 0) {
-      window.addEventListener('load', function () {
+      var register = function () {
         navigator.serviceWorker.register('sw.js').catch(function () { /* fine without it */ });
-      });
+      };
+      /* 'load' may already have fired by the time this runs */
+      if (document.readyState === 'complete') register();
+      else window.addEventListener('load', register);
     }
   }
 
